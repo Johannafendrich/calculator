@@ -7,6 +7,7 @@ const calculatorOutput = document.querySelector(".calculator__output");
 const calculatorInputs = document.querySelectorAll(".calculator__input");
 const calculatorResult = document.querySelector(".calculator__result");
 const calculatorClear = document.querySelector(".calculator__clear");
+const calculatorOperators = document.querySelectorAll(".calculator__operator");
 
 function addition(numberOne, numberTwo) {
   return numberOne + numberTwo;
@@ -24,14 +25,24 @@ function multiply(numberOne, numberTwo) {
   return numberOne * numberTwo;
 }
 
-const numberOne = Number(calculatorInputs[4].innerText);
-const numberTwo = Number(calculatorInputs[6].innerText);
+// let numberOne = Number(calculatorInputs[4].innerText);
+// let numberTwo = Number(calculatorInputs[6].innerText);
 
-function handleClick() {
-  calculatorOutput.value = subtract(numberOne, numberTwo);
-  console.log("clicked");
+let numberOne = 0;
+let numberTwo = 0;
+
+function handleResultClick() {
+  numberTwo = Number(calculatorOutput.value);
+
+  calculatorOutput.value = addition(numberOne, numberTwo);
+  console.log(
+    "handleResultClick",
+    numberOne,
+    numberTwo,
+    calculatorOutput.value
+  );
 }
-calculatorResult.addEventListener("click", handleClick);
+calculatorResult.addEventListener("click", handleResultClick);
 
 function remove() {
   calculatorOutput.value = "";
@@ -39,11 +50,32 @@ function remove() {
 }
 calculatorClear.addEventListener("click", remove);
 
-/*
-const calculatorInputs = document.querySelectorAll(".calculator__input");
-calculatorInputs.forEach(function(calculatorInput) {
-  calculatorInput.addEventListener("click", function() {
-    calculatorOutput.value = calculatorInput.innerHTML;
-  });
-});
-*/
+/*function addInputEventListener(calculatorInput) {
+  console.log("addInputEventListener", calculatorInput.innerText);
+}
+calculatorInputs.forEach(addInputEventListener);*/
+
+function addInputEventListener(calculatorInput) {
+  function handleInput() {
+    // calculatorOutput.value = calculatorOutput.value + calculatorInput.innerText;
+    calculatorOutput.value += calculatorInput.innerText;
+    console.log("handleInput", numberOne, numberTwo, calculatorOutput.value);
+  }
+
+  calculatorInput.addEventListener("click", handleInput);
+}
+calculatorInputs.forEach(addInputEventListener);
+function addOperatorEventListener(calculatorOperators) {
+  function handleOperatorClick() {
+    remove();
+    console.log(
+      "handleOperatorClick",
+      numberOne,
+      numberTwo,
+      calculatorOutput.value
+    );
+  }
+
+  calculatorOperators.addEventListener("click", handleOperatorClick);
+}
+calculatorOperators.forEach(addOperatorEventListener);
