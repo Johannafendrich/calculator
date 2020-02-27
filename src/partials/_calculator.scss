@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 400px;
+  height: 400px;
 }
 
 .calculator__output {
@@ -45,7 +46,7 @@ body {
   background-color: rgba(245, 167, 23, 0.6);
 }
 
-.calculator__operator_result {
+.calculator__result {
   flex-basis: calc(100% / 4);
   font-size: 1.5rem;
   background-color: rgba(113, 223, 41, 0.6);
