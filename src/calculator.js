@@ -1,7 +1,4 @@
-"use strict";
-
-/*const calculatorOutput = document.querySelector(".calculator__output");
-calculatorOutput.value = multiply(10, 5);*/
+import { addition, subtract, divide, multiply } from "./math.js";
 
 const calculatorOutput = document.querySelector(".calculator__output");
 const calculatorInputs = document.querySelectorAll(".calculator__input");
@@ -9,23 +6,6 @@ const calculatorInputs = document.querySelectorAll(".calculator__input");
 const calculatorResult = document.querySelector(".calculator__result");
 const calculatorClear = document.querySelector(".calculator__clear");
 const calculatorOperators = document.querySelectorAll(".calculator__operator");
-
-// calculations
-function addition(numberOne, numberTwo) {
-  return numberOne + numberTwo;
-}
-
-function subtract(numberOne, numberTwo) {
-  return numberOne - numberTwo;
-}
-
-function divide(numberOne, numberTwo) {
-  return numberOne / numberTwo;
-}
-
-function multiply(numberOne, numberTwo) {
-  return numberOne * numberTwo;
-}
 
 //calculatorOutput.value = "Ready to calculate!";
 
