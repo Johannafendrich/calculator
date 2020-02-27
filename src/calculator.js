@@ -1,4 +1,4 @@
-import { addition } from "./math.js";
+import { calculate } from "./math.js";
 
 const calculatorOutput = document.querySelector(".calculator__output");
 const calculatorInputs = document.querySelectorAll(".calculator__input");
@@ -14,11 +14,12 @@ const calculatorOperators = document.querySelectorAll(".calculator__operator");
 
 let numberOne = 0;
 let numberTwo = 0;
+let typeOperator = "";
 
 //Result
 function handleResultClick() {
   numberTwo = Number(calculatorOutput.value);
-  calculatorOutput.value = addition(numberOne, numberTwo);
+  calculatorOutput.value = calculate(numberOne, numberTwo, typeOperator);
   console.log("handleResultClick");
 }
 calculatorResult.addEventListener("click", handleResultClick);
@@ -49,12 +50,13 @@ function addInputEventListener(calculatorInput) {
 calculatorInputs.forEach(addInputEventListener);
 
 //Operators Input
-function addOperatorEventListener(calculatorOperators) {
+function addOperatorEventListener(calculatorOperator) {
   function handleOperatorClick() {
     numberOne = Number(calculatorOutput.value);
+    typeOperator = calculatorOperator.innerText;
     remove();
     console.log("handleOperatorClick");
   }
-  calculatorOperators.addEventListener("click", handleOperatorClick);
+  calculatorOperator.addEventListener("click", handleOperatorClick);
 }
 calculatorOperators.forEach(addOperatorEventListener);
